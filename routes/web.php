@@ -29,5 +29,41 @@ Route::get('/blog', function () {
     return view('blog');
 });
 Route::get('/about', function () {
-    return view('about');
+    return view('about', [
+        "name" => "Marcel Dwi Astika",
+        "email" => "marceldwias@gmail.com"
+    ]);
+});
+Route::get('/chat', function () {
+    return view('chat');
+});
+Route::get('/explore', function () {
+    return view('explore');
+});
+Route::get('/feed', function () {
+    return view('feed');
+});
+Route::get('/form-login', function () {
+    return view('form-login');
+});
+Route::get('/form-register', function () {
+    return view('form-register');
+});
+Route::get('/home', function () {
+    return view('home');
+});
+Route::get('/market', function () {
+    return view('market');
+});
+Route::get('/pages-terms', function () {
+    return view('pages-terms');
+});
+Route::get('/profile', function () {
+    return view('profile');
+});
+Route::get('/setting', function () {
+    return view('setting');
+});
+Route::get('/trending', function () {
+    return view('trending');
 });
