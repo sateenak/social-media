@@ -9,6 +9,9 @@
     }
 </style>
 @endsection
+@section('messages')
+<li class="active">
+@endsection
 @section('container')
             <div class="container m-auto pt-5">
                 

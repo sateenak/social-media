@@ -4,6 +4,9 @@
         
     </style>
 @endsection
+@section('trending')
+<li class="active">
+@endsection
 @section('container')
 
             <div class="container m-auto">

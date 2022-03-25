@@ -12,6 +12,9 @@
     }
 </style>
 @endsection
+@section('profile')
+<li class="active">
+@endsection
 @section('container')
     
             <div class="container pro-container m-auto">

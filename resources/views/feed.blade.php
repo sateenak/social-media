@@ -4,6 +4,9 @@
         
     </style>
 @endsection
+@section('feed')
+<li class="active">
+@endsection
 @section('container')
 
             <div class="container m-auto">

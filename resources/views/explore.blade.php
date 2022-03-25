@@ -9,6 +9,9 @@
     }
 </style>
 @endsection
+@section('explore')
+<li class="active">
+@endsection
 @section('container')
             <div class="container m-auto">
 
