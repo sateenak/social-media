@@ -23,9 +23,9 @@
 
     <!-- CSS 
     ================================================== -->
-    <link rel="stylesheet" href="{{ asset('public/assets/css/uikit.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/assets/css/tailwind.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/uikit.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/tailwind.css') }}">
 
     @yield('style')
 </head>
@@ -453,14 +453,14 @@
             </script>
          <!-- Scripts
             ================================================== -->
-            <script src="{{ asset('public/assets/js/tippy.all.min.js') }}"></script>  
-            <script src="{{ asset('public/assets/js/jquery-3.3.1.min.js') }}"></script>
-            <script src="{{ asset('public/assets/js/uikit.js') }}"></script>
-            <script src="{{ asset('public/assets/js/simplebar.js') }}"></script>
-            <script src="{{ asset('public/assets/js/custom.js') }}"></script>
+            <script src="{{ asset('assets/js/tippy.all.min.js') }}"></script>  
+            <script src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
+            <script src="{{ asset('assets/js/uikit.js') }}"></script>
+            <script src="{{ asset('assets/js/simplebar.js') }}"></script>
+            <script src="{{ asset('assets/js/custom.js') }}"></script>
         
         
-            <script src="{{ asset('public/assets/unpkg.com/ionicons%405.2.3/dist/ionicons.js') }}"></script>
+            <script src="{{ asset('assets/unpkg.com/ionicons%405.2.3/dist/ionicons.js') }}"></script>
         </body>
         
         
