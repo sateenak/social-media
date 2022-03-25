@@ -14,56 +14,50 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/home', function () {
-    return view('home', [
-        "name" => "Marcel Dwi Astika",
-        "email" => "marceldwias@gmail.com"
-    ]);
-});
-Route::get('/about', function () {
-    return view('about');
-});
-Route::get('/blog', function () {
-    return view('blog');
-});
-Route::get('/about', function () {
-    return view('about', [
-        "name" => "Marcel Dwi Astika",
-        "email" => "marceldwias@gmail.com"
+    return view('feed', [
+        "title" => "Beranda"
     ]);
 });
 Route::get('/chat', function () {
-    return view('chat');
+    return view('chat', [
+        "title" => "Chatting"
+    ]);
 });
 Route::get('/explore', function () {
-    return view('explore');
+    return view('explore', [
+        "title" => "Jelajahi"
+    ]);
 });
 Route::get('/feed', function () {
-    return view('feed');
+    return view('feed', [
+        "title" => "Beranda"
+    ]);
 });
 Route::get('/form-login', function () {
-    return view('form-login');
+    return view('form-login', [
+        "title" => "Menu-Login"
+    ]);
 });
 Route::get('/form-register', function () {
-    return view('form-register');
-});
-Route::get('/home', function () {
-    return view('home');
-});
-Route::get('/market', function () {
-    return view('market');
+    return view('form-register', [
+        "title" => "Menu-Register"
+    ]);
 });
 Route::get('/pages-terms', function () {
     return view('pages-terms');
 });
 Route::get('/profile', function () {
-    return view('profile');
+    return view('profile', [
+        "title" => "Profile"
+    ]);
 });
 Route::get('/setting', function () {
-    return view('setting');
+    return view('setting', [
+        "title" => "Setting"
+    ]);
 });
 Route::get('/trending', function () {
-    return view('trending');
+    return view('trending', [
+        "title" => "Trending"
+    ]);
 });
