@@ -17,5 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/home', function () {
-    return view('home');
+    return view('home', [
+        "name" => "Marcel Dwi Astika",
+        "email" => "marceldwias@gmail.com"
+    ]);
+});
+Route::get('/about', function () {
+    return view('about');
+});
+Route::get('/blog', function () {
+    return view('blog');
 });
