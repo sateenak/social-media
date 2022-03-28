@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PostingController;
+use App\Models\Posting;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,51 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('feed', [
-        "title" => "Beranda"
-    ]);
-});
-Route::get('/chat', function () {
-    return view('chat', [
-        "title" => "Chatting"
-    ]);
-});
-Route::get('/explore', function () {
-    return view('explore', [
-        "title" => "Jelajahi"
-    ]);
-});
-Route::get('/feed', function () {
-    return view('feed', [
-        "title" => "Beranda"
-    ]);
-});
-Route::get('/form-login', function () {
-    return view('form-login', [
-        "title" => "Menu-Login"
-    ]);
-});
-Route::get('/form-register', function () {
-    return view('form-register', [
-        "title" => "Menu-Register"
-    ]);
-});
-Route::get('/pages-terms', function () {
-    return view('pages-terms');
-});
-Route::get('/profile', function () {
-    return view('profile', [
-        "title" => "Profile"
-    ]);
-});
-Route::get('/setting', function () {
-    return view('setting', [
-        "title" => "Setting"
-    ]);
-});
-Route::get('/trending', function () {
-    return view('trending', [
-        "title" => "Trending"
-    ]);
-});
+Route::get('/', [PostingController::class, 'index']);
+Route::get('/chat', [PostingController::class, 'chat']);
+Route::get('/explore', [PostingController::class, 'explore']);
+Route::get('/feed', [PostingController::class, 'index']);
+Route::get('/form-login', [PostingController::class, 'login']);
+Route::get('/form-register', [PostingController::class, 'register']);
+Route::get('/pages-terms', [PostingController::class, 'pages']);
+Route::get('/profile', [PostingController::class, 'profile']);
+Route::get('/setting', [PostingController::class, 'setting']);
+Route::get('/trending', [PostingController::class, 'trending']);
+Route::get('/coba', [PostingController::class, 'coba']);
+Route::get('coba/{slug}', [PostingController::class, 'detail']);
