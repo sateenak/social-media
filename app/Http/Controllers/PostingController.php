@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Posting;
+
 use App\Http\Requests\StorePostingRequest;
 use App\Http\Requests\UpdatePostingRequest;
+use App\Models\Posting;
 
 class PostingController extends Controller
 {
@@ -71,14 +72,15 @@ class PostingController extends Controller
 
         return view('coba', [
             'judul' => "blog",
-            "post" => Posting::all()
+            // "post" => Posting::all()
+            "post" => Posting::latest()->get()
         ]);
     }
-    public function detail($slug)
+    public function detail(Posting $post)
     {
         return view("coba2", [
             "judul" => "single post",
-            "postingan" => Posting::find($slug)
+            "posting" => $post
         ]);
     }
     /**

@@ -8,9 +8,9 @@
 </head>
 <body>
     <article>
-<h2>{{ $postingan["title"] }}</h2>
-<h5>{{ $postingan["author"] }}</h5>
-<p>{{ $postingan["body"] }}</p>
+<h2>{{ $posting->title }}</h2>
+<p>By. <a href="/author/{{ $posting->author->username }}">{{ $posting->author->name }}</a> in <a href="/categories/{{ $posting->category->slug }}">{{ $posting->category->name }}</a></p>
+<p>{!! $posting->body !!}</p>
     </article>
     <a href="/coba">Back to post</a>
 </body>
