@@ -71,9 +71,9 @@ class PostingController extends Controller
     {
 
         return view('coba', [
-            'judul' => "blog",
+            'judul' => "All Posts",
             // "post" => Posting::all()
-            "post" => Posting::latest()->get()
+            "posts" => Posting::latest()->get()
         ]);
     }
     public function detail(Posting $post)

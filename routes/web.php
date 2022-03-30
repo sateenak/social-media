@@ -31,20 +31,19 @@ Route::get('/coba', [PostingController::class, 'coba']);
 Route::get('/coba/{post:slug}', [PostingController::class, 'detail']);
 Route::get('/categories', function () {
     return view('categories', [
-        'title' => "Categories",
+        'judul' => "Categories",
         'categories' => Category::all(),
     ]);
 });
 Route::get('categories/{categories:slug}', function (Category $categories) {
-    return view('category', [
-        'title' => $categories->name,
-        'posts' => $categories->post,
-        'category' => $categories->name
+    return view('coba', [
+        'judul' => "Post by category: $categories->name",
+        'posts' => $categories->post->load('category', 'author'),
     ]);
 });
 Route::get('/author/{author:username}', function (User $author) {
     return view('coba', [
-        'judul' => "User Post",
-        'post' => $author->posting,
+        'judul' => "Post by author: $author->name",
+        'posts' => $author->posting->load('category', 'author'),
     ]);
 });

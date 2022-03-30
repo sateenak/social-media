@@ -1,35 +1,28 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <title>{{ $judul }}</title>
-  </head>
-  <body>
-      <div class="container-fluid">
-    @foreach ($post as $posts)
+@extends('layouts.latihan')
+    @section('body')
+    <div class="container">
+    @if ($posts->count())
+    <div class="card mb-3">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body text-xl-center">
+        <h3 class="card-title">{{ $posts[0]->title }}</h3>
+        <p><small class="text-muted">By. <a href="/author/{{ $posts[0]->author->username }}" class="text-decoration-none">{{ $posts[0]->author->name }}</a> in <a href="/categories/{{ $posts[0]->category->slug }}" class="text-decoration-none">{{ $posts[0]->category->name }}</a> {{ $posts[0]->created_at->diffForHumans() }}</small></p>
+        <p class="card-text">{{ $posts[0]->excerpt }}</p>
+        <a href="/coba/{{ $posts[0]->slug }}" class="text-decoration-none btn btn-primary">Read more</a>
+      </div>
+    </div>
+    @else
+        <p>No post found.</p>
+    @endif
+        
+        <h1>{{ $judul }}</h1>
+    @foreach ($posts as $post)
     <article class="border-bottom pb-4">
-        <h2><a href="/coba/{{ $posts->slug }}" class="text-decoration-none">{{ $posts->title }}</a></h2>
-        <p>By. <a href="/author/{{ $posts->author->username }}" class="text-decoration-none">{{ $posts->author->name }}</a> in <a href="/categories/{{ $posts->category->slug }}" class="text-decoration-none">{{ $posts->category->name }}</a></p>
-        <p>{{ $posts->excerpt }}</p>
-        <a href="/coba/{{ $posts->slug }}" class="text-decoration-none">Read more..</a>
+        <h2><a href="/coba/{{ $post->slug }}" class="text-decoration-none">{{ $post->title }}</a></h2>
+        <p>By. <a href="/author/{{ $post->author->username }}" class="text-decoration-none">{{ $post->author->name }}</a> in <a href="/categories/{{ $post->category->slug }}" class="text-decoration-none">{{ $post->category->name }}</a></p>
+        <p>{{ $post->excerpt }}</p>
+        <a href="/coba/{{ $post->slug }}" class="text-decoration-none">Read more..</a>
     </article>
     @endforeach
-</div>
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    -->
-  </body>
-</html>
+    @endsection
+      
