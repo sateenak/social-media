@@ -69,11 +69,11 @@ class PostingController extends Controller
     }
     public function coba()
     {
-
+        $posting = Posting::latest()->filter(request(['search', 'category', 'author']))->get();
         return view('coba', [
             'judul' => "All Posts",
             // "post" => Posting::all()
-            "posts" => Posting::latest()->get()
+            "posts" => $posting
         ]);
     }
     public function detail(Posting $post)

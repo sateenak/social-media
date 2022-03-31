@@ -35,7 +35,7 @@ Route::get('/categories', function () {
         'categories' => Category::all(),
     ]);
 });
-Route::get('categories/{categories:slug}', function (Category $categories) {
+Route::get('/categories/{categories:slug}', function (Category $categories) {
     return view('coba', [
         'judul' => "Post by category: $categories->name",
         'posts' => $categories->post->load('category', 'author'),
