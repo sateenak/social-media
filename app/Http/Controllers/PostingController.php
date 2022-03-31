@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostingRequest;
 use App\Http\Requests\UpdatePostingRequest;
+use App\Models\Category;
 use App\Models\Posting;
+use App\Models\User;
 
 class PostingController extends Controller
 {
@@ -69,9 +71,18 @@ class PostingController extends Controller
     }
     public function coba()
     {
-        $posting = Posting::latest()->filter(request(['search', 'category', 'author']))->get();
+        $title = '';
+        if (request('category')) {
+            $category = Category::firstWhere('slug', request('category'));
+            $title = ' in ' . $category->name;
+        }
+        if (request('author')) {
+            $author = User::firstWhere('username', request('author'));
+            $title = ' by ' . $author->name;
+        }
+        $posting = Posting::latest()->filter(request(['search', 'category', 'author']))->paginate(7)->withQueryString();
         return view('coba', [
-            'judul' => "All Posts",
+            'judul' => "All Posts" . $title,
             // "post" => Posting::all()
             "posts" => $posting
         ]);

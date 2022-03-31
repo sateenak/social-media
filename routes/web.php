@@ -35,15 +35,3 @@ Route::get('/categories', function () {
         'categories' => Category::all(),
     ]);
 });
-Route::get('/categories/{categories:slug}', function (Category $categories) {
-    return view('coba', [
-        'judul' => "Post by category: $categories->name",
-        'posts' => $categories->post->load('category', 'author'),
-    ]);
-});
-Route::get('/author/{author:username}', function (User $author) {
-    return view('coba', [
-        'judul' => "Post by author: $author->name",
-        'posts' => $author->posting->load('category', 'author'),
-    ]);
-});

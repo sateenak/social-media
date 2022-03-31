@@ -49,6 +49,10 @@
             </div>
             @endforeach
           </div>
+          {{-- pagination --}}
+          <div class="d-flex justify-content-center">
+         {{ $posts->links() }}
+        </div>
         </div>
     @endsection
       
