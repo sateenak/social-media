@@ -12,7 +12,7 @@
     
     <!-- Basic Page Needs
     ================================================== -->
-    <title>Instello Sharing Photos</title>
+    <title>{{ $title }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Instello - Sharing Photos platform HTML Template">
@@ -41,13 +41,13 @@
 
                 <div class="flex items-center lg:justify-between justify-around">
 
-                    <a href="trending.html">
+                    <a href="trending">
                         <img src="assets/images/logo.png" alt="" class="w-32">
                     </a>
 
                     <div class="capitalize flex font-semibold hidden lg:block my-2 space-x-3 text-center text-sm">
-                        <a href="form-login.html" class="py-3 px-4">Login</a>
-                        <a href="form-register.html" class="bg-pink-500 pink-500 px-6 py-3 rounded-md shadow text-white">Register</a>
+                        <a href="/form-login" class="py-3 px-4">Login</a>
+                        <a href="/form-register" class="bg-pink-500 pink-500 px-6 py-3 rounded-md shadow text-white">Register</a>
                     </div>
 
                 </div>
@@ -58,16 +58,46 @@
 
         <div>
             <div class="lg:p-12 max-w-md max-w-xl lg:my-0 my-12 mx-auto p-6 space-y-">
-                <h1 class="lg:text-3xl text-xl font-semibold mb-6"> Sign in</h1>
+                <h1 class="lg:text-3xl text-xl font-semibold mb-6">Form Registrasi</h1>
                 <p class="mb-2 text-black text-lg"> Register to manage your account </p>
-                <form action="#">
-                    <div class="flex lg:flex-row flex-col lg:space-x-2">
-                        <input type="text" placeholder="First Name"  class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
-                        <input type="text" placeholder="Last Name" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
-                    </div>
-                    <input type="text" placeholder="Email" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
-                    <input type="text" placeholder="Password" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
-                    <input type="text" placeholder="Confirm Password" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+                <form action="/form-register" method="POST">
+                   @csrf
+                    <input type="text" placeholder="Name" value="{{ old('name') }}" required name="name" id="name" class="@error('name')
+                         is-invalid
+                    @enderror bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+                    @error('name')
+                   <div class="flex items-center bg-blue-500 text-red-700 text-sm font-bold px-4" style="margin-bottom: 5px" role="alert">
+                       <svg class="fill-current w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" style="color: red"><path d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z"/></svg>
+                       <small style="color: red">{{ $message }}</small>
+                     </div>
+                   @enderror
+                    <input type="text" value="{{ old('username') }}" required placeholder="Username" name="username" id="username" class="@error('username')
+                    is-invalid
+               @enderror bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+               @error('username')
+               <div class="flex items-center bg-blue-500 text-red-700 text-sm font-bold px-4" style="margin-bottom: 5px" role="alert">
+                   <svg class="fill-current w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" style="color: red"><path d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z"/></svg>
+                   <small style="color: red">{{ $message }}</small>
+                 </div>
+               @enderror
+                    <input type="email" required value="{{ old('email') }}" placeholder="Email" name="email" id="email" class="@error('email')
+                    is-invalid
+               @enderror bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+               @error('email')
+               <div class="flex items-center bg-blue-500 text-red-700 text-sm font-bold px-4" style="margin-bottom: 5px" role="alert">
+                   <svg class="fill-current w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" style="color: red"><path d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z"/></svg>
+                   <small style="color: red">{{ $message }}</small>
+                 </div>
+               @enderror
+                    <input type="password" value="{{ old('password') }}" required placeholder="Password" name="password" id="password" class="@error('password')
+                    is-invalid
+               @enderror bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+               @error('password')
+               <div class="flex items-center bg-blue-500 text-red-700 text-sm font-bold px-4" style="margin-bottom: 5px" role="alert">
+                   <svg class="fill-current w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" style="color: red"><path d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z"/></svg>
+                   <small style="color: red">{{ $message }}</small>
+                 </div>
+               @enderror
                     <div class="flex justify-start my-4 space-x-1">
                         <div class="checkbox">
                             <input type="checkbox" id="chekcbox1" checked>
@@ -75,9 +105,9 @@
                         </div>
                         <a href="#"> Terms and Conditions</a>
                     </div>
-                    <button type="submit" class="bg-gradient-to-br from-pink-500 py-3 rounded-md text-white text-xl to-red-400 w-full">Login</button>
+                    <button type="submit" class="bg-gradient-to-br from-pink-500 py-3 rounded-md text-white text-xl to-red-400 w-full">Register</button>
                     <div class="text-center mt-5 space-x-2">
-                        <p class="text-base"> Do you have an account? <a href="form-login.html"> Login </a></p>
+                        <p class="text-base"> Do you have an account? <a href="/form-login" style="color: darkturquoise"> Login </a></p>
                     </div>
                 </form>
             </div>

@@ -35,18 +35,7 @@ class PostingController extends Controller
             "title" => "Jelajahi"
         ]);
     }
-    public function login()
-    {
-        return view('form-login', [
-            "title" => "Menu-Login"
-        ]);
-    }
-    public function registrasi()
-    {
-        return view('form-register', [
-            "title" => "Menu-Register"
-        ]);
-    }
+
     public function pages()
     {
         return view('pages-terms');
