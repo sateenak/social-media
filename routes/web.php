@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostingController;
 use App\Http\Controllers\RegisterController;
@@ -21,8 +22,10 @@ Route::get('/', [PostingController::class, 'index']);
 Route::get('/chat', [PostingController::class, 'chat']);
 Route::get('/explore', [PostingController::class, 'explore']);
 Route::get('/feed', [PostingController::class, 'index']);
-Route::get('/form-login', [LoginController::class, 'login']);
-Route::get('/form-register', [RegisterController::class, 'registrasi']);
+Route::get('/form-login', [LoginController::class, 'login'])->name('login')->middleware('guest');
+Route::post('/form-login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
+Route::get('/form-register', [RegisterController::class, 'registrasi'])->middleware('guest');
 Route::post('/form-register', [RegisterController::class, 'store']);
 Route::get('/pages-terms', [PostingController::class, 'pages']);
 Route::get('/profile', [PostingController::class, 'profile']);
@@ -36,3 +39,5 @@ Route::get('/categories', function () {
         'categories' => Category::all(),
     ]);
 });
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+// Route::get('/dashboard', 'DashboardController@index');

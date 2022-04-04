@@ -17,9 +17,26 @@
           </li>
         </ul>
         <ul class="navbar-nav">
+        @auth
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Welcome Back, {{ auth()->user()->name }}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/dashboard">My Dashboard</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <form action="/logout" method="POST">
+              @csrf
+              <button type="submit" class="dropdown-item"><i>Logout</i></button>
+            </form>
+          </ul>
+        </li>
+            @else
           <li class="nav-item">
             <a href="/form-login" class="nav-link"><i class="bi bi-box-arrow-in-right"></i> Login</a>
           </li>
+        
+        @endauth
         </ul>
       </div>
     </div>
