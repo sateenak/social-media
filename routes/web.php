@@ -43,4 +43,5 @@ Route::get('/categories', function () {
 Route::get('/dashboard', function () {
     return view('dashboard.index');
 })->middleware('auth');
+Route::get('/dashboard/posting/checkSlug', [DashboardPostController::class, 'checkSlug']);
 Route::resource('/dashboard/posting', DashboardPostController::class)->middleware('auth');
