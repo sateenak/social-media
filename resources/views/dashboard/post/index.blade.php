@@ -10,13 +10,13 @@
 @endif
 <div class="table-responsive col-lg-8">
   <a href="/dashboard/posting/create" class="btn btn-success">Create New Post</a>
-    <table class="table table-striped table-sm col-lg-5">
+    <table class="table table-striped table-sm">
       <thead>
         <tr>
-          <th scope="col">No</th>
-          <th scope="col">Title</th>
-          <th scope="col">Category</th>
-          <th scope="col">Action</th>
+          <th scope="col" rowspan="1">No</th>
+          <th scope="col" rowspan="5">Title</th>
+          <th scope="col" rowspan="3">Category</th>
+          <th scope="col" rowspan="3">Action</th>
         </tr>
       </thead>
       <tbody>

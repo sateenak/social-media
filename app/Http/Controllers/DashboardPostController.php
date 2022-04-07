@@ -6,6 +6,7 @@ use App\Models\Posting;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Contracts\Service\Attribute\Required;
 use Illuminate\Support\Str;
 
@@ -46,9 +47,13 @@ class DashboardPostController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'slug' => 'required|unique:postings',
+            'image' => 'image|file|max:2000',
             'category_id' => 'required',
             'body' => 'required'
         ]);
+        if ($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('post-image');
+        }
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200, '...');
         Posting::create($validatedData);
@@ -96,12 +101,20 @@ class DashboardPostController extends Controller
         $rules = [
             'title' => 'required|max:255',
             'category_id' => 'required',
+            'image' => 'image|file|max:2000',
             'body' => 'required'
         ];
         if ($request->slug != $posting->slug) {
             $rules['slug'] = 'required|unique:postings';
         }
+
         $validatedData = $request->validate($rules);
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('post-image');
+        }
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200, '...');
         Posting::where('id', $posting->id)->update($validatedData);
@@ -116,6 +129,9 @@ class DashboardPostController extends Controller
      */
     public function destroy(Posting $posting)
     {
+        if ($posting->image) {
+            Storage::delete($posting->image);
+        }
         Posting::destroy($posting->id);
         return redirect('/dashboard/posting')->with('success', 'Post has been delated!');
     }
