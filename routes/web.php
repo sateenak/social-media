@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminCategoryController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -44,4 +45,6 @@ Route::get('/dashboard', function () {
     return view('dashboard.index');
 })->middleware('auth');
 Route::get('/dashboard/posting/checkSlug', [DashboardPostController::class, 'checkSlug']);
+Route::get('/dashboard/categories/checkSlug', [AdminCategoryController::class, 'checkSlug']);
 Route::resource('/dashboard/posting', DashboardPostController::class)->middleware('auth');
+Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');

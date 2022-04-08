@@ -23,7 +23,7 @@ class PostingFactory extends Factory
             'body' => collect($this->faker->paragraphs(mt_rand(5, 10)))->map(function ($para) {
                 return "<p>$para</p>";
             })->implode(''),
-            'user_id' => mt_rand(1, 3),
+            'user_id' => mt_rand(1, 4),
             'category_id' => mt_rand(1, 3)
         ];
     }
