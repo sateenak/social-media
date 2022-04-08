@@ -20,7 +20,7 @@ use App\Http\Controllers\DashboardPostController;
 |
 */
 
-Route::get('/', [PostingController::class, 'index']);
+Route::get('/', [PostingController::class, 'coba']);
 Route::get('/chat', [PostingController::class, 'chat']);
 Route::get('/explore', [PostingController::class, 'explore']);
 Route::get('/feed', [PostingController::class, 'index']);
